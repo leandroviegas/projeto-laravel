@@ -1,0 +1,181 @@
+.nopadding {
+    padding: 0 !important;
+    margin: 0 !important;
+ }
+
+.my-navbar ul li{
+    display: inline-block;
+    padding-right: 20px;
+    font-size: 20px;
+    color: #fff;
+    font-weight: bolder;
+    text-shadow: -1px 2px 1px #ffd4a2;
+}
+
+.my-navbar ul li a{
+    text-decoration: none;
+    color: #fff;
+}
+.my-navbar{
+    top: 40px;
+    border-radius: 20px;
+    position: relative;
+    height: auto;
+    background-color: #790000;
+}
+.my-navbar ul{
+    text-align: right;
+    position: relative;
+    margin: 0;
+    right: 0;
+    height: auto;
+    padding: 20px;
+}
+
+.bakcground{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    filter: brightness(50%);
+    z-index: -20;
+    object-fit: cover;
+}
+
+.slogan{
+    position: relative;
+    margin-top: 25%;
+    color: #fff;
+    padding: 0px 20px;
+    text-align: center;
+    text-shadow: -1px 4px 4px #000;
+}
+.line{
+    height: 10px;
+    width: 200px;
+    left: 50%;
+    transform: translateX(-50%);
+    position: relative;
+    text-align: center;
+}
+
+.line.verde{
+    background-color: #00a651;
+}
+
+.line.vermelho{
+    height: 5px;
+    background-color: #bd181f;
+    top: -12px;
+    z-index: -1;
+}
+
+.pos-banner{
+    top: 100%;
+    width: 100%;
+    position: absolute;
+}
+
+.sobre-pos-vermelha{
+    height: 100%;
+    width: 100%;
+    opacity: 30%;
+    filter: opacity(30%);
+    background-color: #007236;
+    position: absolute;
+    transition: filter 0.5s, opacity 0.5s;
+    -webkit-animation: filter 0.5s, opacity 0.5s; 
+    text-align: center;
+    vertical-align: center;
+    color: #fff;
+    font-weight: bolder;
+}
+.sobre-pos-vermelha:hover{
+    filter: opacity(0%);
+    opacity: 0%;
+}
+.sobre-pos-verde{
+    height: 100%;
+    width: 100%;
+    opacity: 30%;
+    filter: opacity(30%);
+    background-color: #bd181f;
+    position: absolute;
+    transition: filter 0.5s, opacity 0.5s;
+    -webkit-animation: filter 0.5s, opacity 0.5s; 
+    text-align: center;
+    color: #fff;
+    font-weight: bolder;
+}
+.sobre-pos-verde:hover{
+    filter: opacity(0%);
+    opacity: 0%;
+}
+
+.sobre-pos-amarelo{
+    height: 100%;
+    width: 100%;
+    opacity: 30%;
+    filter: opacity(30%);
+    background-color: #fbff09;
+    position: absolute;
+    transition: filter 0.5s, opacity 0.5s;
+    -webkit-animation: filter 0.5s, opacity 0.5s; 
+    text-align: center;
+    color: #fff;
+    font-weight: bolder;
+}
+.sobre-pos-amarelo:hover{
+    filter: opacity(0%);
+    opacity: 0%;
+}
+
+.btn-cardapio{
+    background-color: #bd181f;
+    border: none;
+    border-radius: 10px;
+    color: #fff;
+    font-size: 26px;
+    font-weight: bolder;
+    padding: 0px 10px;
+}
+.banner-convite{
+    position: relative;
+    height: auto;
+    width: auto;
+}
+.banner-convite > img{
+    width: 100%;
+    height: auto;
+    height: 300px;
+    object-fit: cover;
+    z-index: -1;
+    filter: brightness(50%);
+}
+
+.text-align-center{
+    z-index: 2;
+    position: absolute;
+    text-align: center;
+    color: #fff;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    text-shadow: -1px 4px 4px #000;
+}
+
+.greenTexture{
+    height: 80px;
+    width: 100%;
+    background-image: url("../img/greenTexture.png");
+}
+
+.greenTexture.last{
+    height: 20px;
+    filter: brightness(50%);
+}
+
+.greenClothe{
+    height: auto;
+    width: auto;
+    position: relative;
+}
