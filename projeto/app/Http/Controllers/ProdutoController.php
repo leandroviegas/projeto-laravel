@@ -15,9 +15,10 @@ class ProdutoController extends Controller
      */
     public function index()
     {
+        $title = "Produto";
         $Produto = produto::latest()->paginate(5);
   
-        return view('produtos.index',compact('Produto'))
+        return view('produtos.index',compact('Produto'),compact("title"))
             ->with('i', (request()->input('page', 1) - 1) * 5);
     }
    
@@ -28,7 +29,8 @@ class ProdutoController extends Controller
      */
     public function create()
     {
-        return view('produtos.create');
+        $title = "Produto";
+        return view('produtos.create',compact("title"));
     }
   
     /**
@@ -39,6 +41,7 @@ class ProdutoController extends Controller
      */
     public function store(Request $request)
     {
+        $title = "Produto";
         $request->validate([
             'nome' => 'required',
             'descricao' => 'required',
@@ -49,7 +52,7 @@ class ProdutoController extends Controller
         $request->merge(['preco' => $preco]);
         produto::create($request->all());
    
-        return redirect()->route('produtos.index')
+        return redirect()->route('produtos.index',compact("title"))
                         ->with('success','Produto criado com sucesso.');
     }
    
@@ -61,7 +64,8 @@ class ProdutoController extends Controller
      */
     public function show(produto $produto)
     {
-        return view('produtos.show',compact('produto'));
+        $title = "Produto";
+        return view('produtos.show',compact('produto'),compact("title"));
     }
    
     /**
@@ -72,7 +76,8 @@ class ProdutoController extends Controller
      */
     public function edit(produto $produto)
     {
-        return view('produtos.edit',compact('produto'));
+        $title = "Produto";
+        return view('produtos.edit',compact('produto'),compact("title"));
     }
   
     /**
@@ -84,6 +89,7 @@ class ProdutoController extends Controller
      */
     public function update(Request $request, Produto $produto)
     {
+        $title = "Produto";
         $request->validate([
             'nome' => 'required',
             'descricao' => 'required',
@@ -96,7 +102,7 @@ class ProdutoController extends Controller
 
         $produto->update($request->all());
   
-        return redirect()->route('produtos.index')
+        return redirect()->route('produtos.index',compact("title"))
                         ->with('success','Alterações realizadas com sucesso');
     }
   
@@ -108,9 +114,10 @@ class ProdutoController extends Controller
      */
     public function destroy(Produto $produto)
     {
+        $title = "Produto";
         $produto->delete();
   
-        return redirect()->route('produtos.index')
+        return redirect()->route('produtos.index',compact("title"))
                         ->with('success','Produto apagado com sucesso');
     }
 }

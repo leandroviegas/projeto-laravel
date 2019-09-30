@@ -14,9 +14,10 @@ class TipoProdutoController extends Controller
      */
     public function index()
     {
+        $title = "Tipo de produto";
         $tiposProdutos = TipoProduto::latest()->paginate(5);
   
-        return view('TipoProduto.index',compact('tiposProdutos'))
+        return view('TipoProduto.index',compact('tiposProdutos'),compact("title"))
             ->with('i', (request()->input('page', 1) - 1) * 5);
     }
    
@@ -27,7 +28,8 @@ class TipoProdutoController extends Controller
      */
     public function create()
     {
-        return view('TipoProduto.create');
+        $title = "Tipo de produto";
+        return view('TipoProduto.create',compact("title"));
     }
   
     /**
@@ -38,13 +40,14 @@ class TipoProdutoController extends Controller
      */
     public function store(Request $request)
     {
+        $title = "Tipo de produto";
         $request->validate([
             'nome' => 'required',
         ]);
   
         TipoProduto::create($request->all());
    
-        return redirect()->route('TipoProduto.index')
+        return redirect()->route('TipoProduto.index',compact("title"))
                         ->with('success','Tipo de produto criado com sucesso.');
     }
    
@@ -56,7 +59,8 @@ class TipoProdutoController extends Controller
      */
     public function show(TipoProduto $TipoProduto)
     {
-        return view('TipoProduto.show',compact('TipoProduto'));
+        $title = "Tipo de produto";
+        return view('TipoProduto.show',compact('TipoProduto'),compact("title"));
     }
    
     /**
@@ -67,7 +71,8 @@ class TipoProdutoController extends Controller
      */
     public function edit(TipoProduto $TipoProduto)
     {
-        return view('TipoProduto.edit',compact('TipoProduto'));
+        $title = "Tipo de produto";
+        return view('TipoProduto.edit',compact('TipoProduto'),compact("title"));
     }
   
     /**
@@ -79,13 +84,14 @@ class TipoProdutoController extends Controller
      */
     public function update(Request $request, TipoProduto $TipoProduto)
     {
+        $title = "Tipo de produto";
         $request->validate([
             'nome' => 'required',
         ]);
   
         $TipoProduto->update($request->all());
   
-        return redirect()->route('TipoProduto.index')
+        return redirect()->route('TipoProduto.index',compact("title"))
                         ->with('success','Alterações realizadas com sucesso');
     }
   
@@ -97,9 +103,10 @@ class TipoProdutoController extends Controller
      */
     public function destroy(TipoProduto $TipoProduto)
     {
+        $title = "Tipo de produto";
         $TipoProduto->delete();
   
-        return redirect()->route('TipoProduto.index')
+        return redirect()->route('TipoProduto.index',compact("title"))
                         ->with('success','Tipo de produto apagado com sucesso');
     }
 }

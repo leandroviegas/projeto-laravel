@@ -1,13 +1,18 @@
+<?php
+use App\Produto;
+?>
+
 @extends('shared.adminLayout')
+
 
 @section('content')
 <div class="row">
     <div class="col-lg-12 py-4 margin-tb">
         <div class="pull-left">
-            <h3>Criar novo tipo de produto</h3>
+            <h3>Criar Novo Produto</h3>
         </div>
         <div class="pull-right">
-            <a class="btn btn-info" href="{{ route('TipoProduto.index') }}"> Voltar</a>
+            <a class="btn btn-info" href="{{ route('produtos.index') }}"> Voltar</a>
         </div>
     </div>
 </div>
@@ -23,19 +28,24 @@
     </div>
 @endif
    
-<form action="{{ route('TipoProduto.store') }}" method="POST">
+<form action="{{ route('Destaque.store') }}" method="POST">
     @csrf
     @method('POST')
      <div class="row">
-        <div class="col-xs-12 col-sm-12 col-md-12">
+     <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
-                <strong>Nome:</strong>
-                <input type="text" name="nome" class="form-control" placeholder="Nome">
+                <strong>Produto:</strong><br />
+                <select class="form-control" name="produtoId" style="width: 150px">
+                    @foreach(Produto::All() as $produto)
+                        <option value="{{ $produto->id }}">{{ $produto->nome }}</option>
+                    @endforeach
+                </select>
             </div>
-        </div>        
+        </div>
+        
         <div class="col-xs-12 col-sm-12 col-md-12 text-center">
         <hr />
-                <button type="submit" class="btn btn-primary">Novo Tipo de Produto</button>
+                <button type="submit" class="btn btn-primary">Adicionar aos destaques</button>
         </div>
     </div>
    

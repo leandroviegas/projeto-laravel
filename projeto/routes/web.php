@@ -18,3 +18,5 @@ Route::get('/', function () {
 Route::resource('produtos','ProdutoController');
 
 Route::resource('TipoProduto','TipoProdutoController');
+
+Route::resource('Destaque','DestaqueController');

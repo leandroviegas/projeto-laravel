@@ -2,7 +2,8 @@
 use App\TipoProduto;
 ?>
 
-@extends('produtos.layout')
+@extends('shared.adminLayout')
+
    
 @section('content')
     <div class="row">

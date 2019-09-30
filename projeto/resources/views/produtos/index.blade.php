@@ -1,4 +1,5 @@
-@extends('produtos.layout')
+@extends('shared.adminLayout')
+
 <?php
 use App\TipoProduto;
 ?>
@@ -24,7 +25,7 @@ use App\TipoProduto;
     <thead class="thead-dark">
         <tr>
             <th class="text-center">No</th>
-            <th class="text-center">nome</th>
+            <th class="text-center">Nome</th>
             <th class="text-center">Descrição</th>
             <th width="150px" class="text-center">Preço</th>
             <th class="text-center">Tipo de produto</th>
@@ -35,7 +36,7 @@ use App\TipoProduto;
         <tr>
             <td class="text-center">{{ ++$i }}</td>
             <td class="text-center">{{ $product->nome ?? "?" }}</td>
-            <td class="text-center">{{ substr($product->descricao, 0, 40)."..." ?? "?" }}</td>
+            <td class="text-center">{{ mb_strimwidth($product->descricao, 0, 40, '...' ?? "?") }}</td>
             <td class="text-center">R$ {{ str_replace('.',',',$product->preco) ?? "?" }}</td>
             <td class="text-center">{{ TipoProduto::Find($product->tipoProdutoId)->nome ?? "?" }}</td>
             <td>
