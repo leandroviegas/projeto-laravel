@@ -5,7 +5,8 @@ namespace App\Http\Controllers;
 use App\Produto;
 use App\TipoProduto;
 use Illuminate\Http\Request;
-  
+use Illuminate\Support\Facades\Storage;
+
 class ProdutoController extends Controller
 {
     /**
@@ -45,17 +46,24 @@ class ProdutoController extends Controller
         $request->validate([
             'nome' => 'required',
             'descricao' => 'required',
-            'preco' => 'required'
-        ]);
+            'preco' => 'required',
+            'tipoProdutoId' => 'required',
+            'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
 
+        ]);
+        $imageName = time().'.'.request()->image->getClientOriginalExtension();
+        request()->image->move(public_path('ImagensProdutos'), $imageName);        
         $preco = substr(trim(str_replace(",",".", $request->input('preco')),"R$"), 1);
-        $request->merge(['preco' => $preco]);
-        produto::create($request->all());
+        $request->merge(['preco' => $preco]);    
+
+        $requestData = $request->all();
+        $requestData['image'] = "/ImagensProdutos"."/".$imageName;
+        produto::create($requestData);
    
         return redirect()->route('produtos.index',compact("title"))
                         ->with('success','Produto criado com sucesso.');
     }
-   
+
     /**
      * Display the specified resource.
      *
@@ -87,20 +95,28 @@ class ProdutoController extends Controller
      * @param  \App\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Produto $produto)
+    public function update(Request $request, produto $produto)
     {
         $title = "Produto";
         $request->validate([
             'nome' => 'required',
             'descricao' => 'required',
             'preco' => 'required',
-            'tipoProdutoId' => 'required'
-        ]);
-        
-        $preco = substr(trim(str_replace(",",".", $request->input('preco')),"R$"), 1);
-        $request->merge(['preco' => $preco]);
+            'tipoProdutoId' => 'required',
+            'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
 
-        $produto->update($request->all());
+        ]);
+        if(Storage::disk('public')->exists($request->image)){
+            Storage::delete($request->image);
+        }
+        $imageName = time().'.'.request()->image->getClientOriginalExtension();
+        request()->image->move(public_path('ImagensProdutos'), $imageName);        
+        $preco = str_replace(" ", "", trim(str_replace(",",".", $request->input('preco')),"R$"));
+        $request->merge(['preco' => $preco]); 
+
+        $requestData = $request->all();
+        $requestData['image'] = "/ImagensProdutos"."/".$imageName;
+        $produto->update($requestData);
   
         return redirect()->route('produtos.index',compact("title"))
                         ->with('success','Alterações realizadas com sucesso');

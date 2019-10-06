@@ -38,10 +38,14 @@ use App\Produto;
                     <select class="form-control" name="produtoId" style="width: 150px">
                     <option value="0" selected>Vazio</option>
                         @foreach(Produto::All() as $produto)
-                            @if(Produto::Find($destaque->id)->id == $produto->id)
-                            <option value="{{ $produto->id }}" selected>{{ $produto->nome }}</option>
+                            @if(Produto::Find($Destaque->produtoId)->id != null)
+                                @if(Produto::Find($Destaque->produtoId)->id == $produto->id)
+                                <option value="{{ $produto->id }}" selected>{{ $produto->nome }}</option>
+                                @else
+                                <option value="{{ $produto->id }}">{{ $produto->nome }}</option>
+                                @endif
                             @else
-                            <option value="{{ $produto->id }}">{{ $produto->nome }}</option>
+                                <option value="{{ $produto->id }}">{{ $produto->nome }}</option>
                             @endif
                         @endforeach
                     </select>

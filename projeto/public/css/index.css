@@ -166,7 +166,7 @@
 .greenTexture{
     height: 80px;
     width: 100%;
-    background-image: url("../img/greenTexture.png");
+    background-color: #455007;
 }
 
 .greenTexture.last{
@@ -178,4 +178,10 @@
     height: auto;
     width: auto;
     position: relative;
+}
+
+.mais-pedidos-img{
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
 }

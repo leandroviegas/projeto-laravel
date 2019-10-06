@@ -34,5 +34,16 @@
             </div>
             <hr />
         </div>
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="form-group">
+                <strong>Imagem:</strong>
+                @if($produto->image != null)
+                    <img src="{{ $produto->image }}" width="400px">
+                @else
+                    Imagem não encontrada!!
+                @endif
+            </div>
+            <hr />
+        </div>
     </div>
 @endsection

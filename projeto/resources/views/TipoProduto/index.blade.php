@@ -7,7 +7,7 @@
                 <h2></h2>
             </div>
             <div class="pull-right">
-                <a class="btn btn-success" href="{{ route('produtos.create') }}"> Novo Produto</a>
+                <a class="btn btn-success" href="{{ route('TipoProduto.create') }}"> Novo Produto</a>
             </div>
         </div>
     </div>

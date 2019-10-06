@@ -18,6 +18,7 @@ class Produto extends Migration
             $table->string('nome');
             $table->string('descricao');
             $table->decimal('preco', 8, 2);
+            $table->string('image');
             $table->integer('tipoProdutoId');
             $table->timestamps();
         });

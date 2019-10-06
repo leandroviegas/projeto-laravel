@@ -41,7 +41,7 @@ class DestaqueController extends Controller
     {
         $title = "Destaque";
         $request->validate([
-            'produtoId' => 'required'
+            'produtoId' => 'required',
         ]);
 
         Destaque::create($request->all());
